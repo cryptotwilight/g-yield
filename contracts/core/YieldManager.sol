@@ -47,41 +47,53 @@ contract YieldManager is IYieldManager {
         return (acceptedERC20s, erc20Names); 
     }
     
-    function getUserTransactionsForProtocol(string memory _yieldProtocol) override external view returns (uint256 [] memory _txRefs, uint256 [] memory _principle, uint256 [] memory _yieldRequestDates){
+    function getUserTransactionsForProtocol(string memory _yieldProtocol) override external view returns (uint256 [] memory _txRefs, uint256 [] memory _principal, uint256 [] memory _yieldRequestDates){
         require(protocolHoldingStatusByCaller[msg.sender][_yieldProtocol], " gtfp 00 - no user transactions for protocol ");
         
+        _txRefs = new uint256[](3);
+        _principal =  new uint256[](3);
+        _yieldRequestDates = new uint256[](3) ;
         
+        for(uint256 x ; x < 3; x++){
+            uint256 textValue = x+1;
+            _txRefs[x] = textValue;
+            _principal[x] = textValue;
+            _yieldRequestDates[x] =textValue;
+        }
     }
     
     function reviewYield(string memory _yieldProtocol, uint256 _txRef ) override  external view returns ( string memory _protocol, uint256 _principal, address _erc20, uint256 _yieldPercentage, uint256 _term, uint256 _deliveryDate, uint256 _earnedToDate){
-        require(hasProtocolAssociation(msg.sender, _yieldProtocol), " ry 00 - address has no association to yield protocol ");
-        require(isKnownTransaction(msg.sender, _yieldProtocol, _txRef), " ry 01 - unknown caller transaction for protocol ");
+        //require(hasProtocolAssociation(msg.sender, _yieldProtocol), " ry 00 - address has no association to yield protocol ");
+        //require(isKnownTransaction(msg.sender, _yieldProtocol, _txRef), " ry 01 - unknown caller transaction for protocol ");
     
-        
+
+        return ("test-protocol", 0, address(0x0000000000000000000000000000000000000000), 0, 0, block.timestamp, block.timestamp)   ;
     }
 
     
     function requestYield(string memory _yieldProtocol, uint256 _principal, address _erc20, uint256 _yieldPercentage, uint256 _term) override  external payable returns (uint256 _txnRef, uint256 _deliveryDate){
-        require(protocolEnabledStatusByProtocol[_yieldProtocol], " ry 00 - protocol disabled ");
-        require(erc20AcceptedStatusByAddress[_erc20], " ry 01 - ERC20 not accepted. ");
+        //require(protocolEnabledStatusByProtocol[_yieldProtocol], " ry 00 - protocol disabled ");
+        //require(erc20AcceptedStatusByAddress[_erc20], " ry 01 - ERC20 not accepted. ");
         
         
+        return(generateTxnRef(), block.timestamp);
     }
     
     function cancelYieldRequest(string memory _yieldProtocol, uint256 _txRef, uint256 _cancellationFee ) override  external payable returns (uint256 _txnRef, uint256 _cancellationDate, uint256 _principalReturned, uint256 _earningsReturned){
-        require(hasProtocolAssociation(msg.sender, _yieldProtocol), " cyr 00 - address has no association to yield protocol ");
-        require(isKnownTransaction(msg.sender, _yieldProtocol, _txRef), " cyr 01 - unknown caller transaction for protocol ");
+        //require(hasProtocolAssociation(msg.sender, _yieldProtocol), " cyr 00 - address has no association to yield protocol ");
+        //require(isKnownTransaction(msg.sender, _yieldProtocol, _txRef), " cyr 01 - unknown caller transaction for protocol ");
         
         
+        return(0, block.timestamp, 0, 0);
     }
     
     function withdrawYield(string memory _yieldProtocol, uint256 _txRef) override external payable returns ( uint256 _principalReturned, uint256 _earningsReturned){
-        require(hasProtocolAssociation(msg.sender, _yieldProtocol), " wy 00 - address has no association to yield protocol ");
-        require(isKnownTransaction(msg.sender, _yieldProtocol, _txRef), " wy 01 - unknown caller transaction for protocol ");
+        //require(hasProtocolAssociation(msg.sender, _yieldProtocol), " wy 00 - address has no association to yield protocol ");
+        //require(isKnownTransaction(msg.sender, _yieldProtocol, _txRef), " wy 01 - unknown caller transaction for protocol ");
         
         
         
-        
+        return (0, 0);
     }
     
     
