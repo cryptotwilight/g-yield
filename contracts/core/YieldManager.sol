@@ -48,7 +48,7 @@ contract YieldManager is IYieldManager {
     }
     
     function getUserTransactionsForProtocol(string memory _yieldProtocol) override external view returns (uint256 [] memory _txRefs, uint256 [] memory _principal, uint256 [] memory _yieldRequestDates){
-        require(protocolHoldingStatusByCaller[msg.sender][_yieldProtocol], " gtfp 00 - no user transactions for protocol ");
+        //require(protocolHoldingStatusByCaller[msg.sender][_yieldProtocol], " gtfp 00 - no user transactions for protocol ");
         
         _txRefs = new uint256[](3);
         _principal =  new uint256[](3);
