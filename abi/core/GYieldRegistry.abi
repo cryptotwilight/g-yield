@@ -3,6 +3,107 @@
 		"inputs": [
 			{
 				"internalType": "address",
+				"name": "_erc20",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "_erc20Name",
+				"type": "string"
+			}
+		],
+		"name": "registerERC20",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "_txnRef",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_oracleAddress",
+				"type": "address"
+			}
+		],
+		"name": "registerOracleAddress",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "_isRegistered",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_yieldProtocol",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "_yieldProtocolAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "_protocolWebsite",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_cancellationFeePercentage",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "_enabled",
+				"type": "bool"
+			}
+		],
+		"name": "registerProtocol",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "_txnRef",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_swapAddress",
+				"type": "address"
+			}
+		],
+		"name": "registerSwapAddress",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "_isRegistered",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
 				"name": "_administrator",
 				"type": "address"
 			}
@@ -147,6 +248,38 @@
 	},
 	{
 		"inputs": [],
+		"name": "getRegisteredSwaps",
+		"outputs": [
+			{
+				"internalType": "string[]",
+				"name": "_swaps",
+				"type": "string[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_swap",
+				"type": "string"
+			}
+		],
+		"name": "getSwapAddress",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "_swapAddress",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "getVersion",
 		"outputs": [
 			{
@@ -194,88 +327,6 @@
 			}
 		],
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_erc20",
-				"type": "address"
-			},
-			{
-				"internalType": "string",
-				"name": "_erc20Name",
-				"type": "string"
-			}
-		],
-		"name": "registerERC20",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "_txnRef",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_oracleAddress",
-				"type": "address"
-			}
-		],
-		"name": "registerOracleAddress",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "_isRegistered",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "_yieldProtocol",
-				"type": "string"
-			},
-			{
-				"internalType": "address",
-				"name": "_yieldProtocolAddress",
-				"type": "address"
-			},
-			{
-				"internalType": "string",
-				"name": "_protocolWebsite",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_cancellationFeePercentage",
-				"type": "uint256"
-			},
-			{
-				"internalType": "bool",
-				"name": "_enabled",
-				"type": "bool"
-			}
-		],
-		"name": "registerProtocol",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "_txnRef",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{

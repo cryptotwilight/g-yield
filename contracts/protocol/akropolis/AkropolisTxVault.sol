@@ -25,12 +25,12 @@ contract AkropolisTxVault is TxVault {
         deliveryDate = _deliveryDate;
 		yVaultAddress = _yVaultAddress;
         yvault = IyVault(_yVaultAddress); // real yvault address
-		self = address(this);
+		self = address(this);		
     }
     
     function deposit(uint256 _principal, uint256 _yieldPercentage) payable external returns (bool _deposited){
         
-		erc20.transferFrom(gyieldProtcolAddress, self, _principal); 
+		erc20.transferFrom(gyieldProtocolAddress, self, _principal); 
 		erc20.approve(yVaultAddress, _principal);
 		yvault.deposit(_principal);
         return true; 

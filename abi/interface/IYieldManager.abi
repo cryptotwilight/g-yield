@@ -50,6 +50,24 @@
 	},
 	{
 		"inputs": [],
+		"name": "getUserTVL",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "_totalLockedPrincipleUSD",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_totalLockedEarningsUSD",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "getYieldRequestsForAddress",
 		"outputs": [
 			{
@@ -86,19 +104,9 @@
 				"internalType": "string[]",
 				"name": "_yieldRequestStatuses",
 				"type": "string[]"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_totalLockedPrincipleUSD",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_totalLockedEarningsUSD",
-				"type": "uint256"
 			}
 		],
-		"stateMutability": "nonpayable",
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
