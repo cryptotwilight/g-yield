@@ -880,6 +880,7 @@
 				<!-- right column --> 
 				<td valign="top">
 					<center><h1>Yield Request History</h1></center>
+					<span id="transactionSent"></span>
 					<h3>Total Locked Principal (USDC) : 0</h3><h3>Total Locked Earnings (USDC) : 0</h3>
 					<table> 
 						<tr>
@@ -987,6 +988,249 @@
 		//	  getAccountsResult.innerHTML = accounts[0] || 'Not able to get accounts';
 		//	});
 
+			const ierc20abi = [
+				{
+					"anonymous": false,
+					"inputs": [
+						{
+							"indexed": true,
+							"internalType": "address",
+							"name": "owner",
+							"type": "address"
+						},
+						{
+							"indexed": true,
+							"internalType": "address",
+							"name": "spender",
+							"type": "address"
+						},
+						{
+							"indexed": false,
+							"internalType": "uint256",
+							"name": "value",
+							"type": "uint256"
+						}
+					],
+					"name": "Approval",
+					"type": "event"
+				},
+				{
+					"inputs": [
+						{
+							"internalType": "address",
+							"name": "spender",
+							"type": "address"
+						},
+						{
+							"internalType": "uint256",
+							"name": "amount",
+							"type": "uint256"
+						}
+					],
+					"name": "approve",
+					"outputs": [
+						{
+							"internalType": "bool",
+							"name": "",
+							"type": "bool"
+						}
+					],
+					"stateMutability": "nonpayable",
+					"type": "function"
+				},
+				{
+					"inputs": [
+						{
+							"internalType": "address",
+							"name": "_owner",
+							"type": "address"
+						}
+					],
+					"name": "mint",
+					"outputs": [
+						{
+							"internalType": "uint256",
+							"name": "_amountMinted",
+							"type": "uint256"
+						}
+					],
+					"stateMutability": "nonpayable",
+					"type": "function"
+				},
+				{
+					"inputs": [
+						{
+							"internalType": "address",
+							"name": "recipient",
+							"type": "address"
+						},
+						{
+							"internalType": "uint256",
+							"name": "amount",
+							"type": "uint256"
+						}
+					],
+					"name": "transfer",
+					"outputs": [
+						{
+							"internalType": "bool",
+							"name": "",
+							"type": "bool"
+						}
+					],
+					"stateMutability": "nonpayable",
+					"type": "function"
+				},
+				{
+					"anonymous": false,
+					"inputs": [
+						{
+							"indexed": true,
+							"internalType": "address",
+							"name": "from",
+							"type": "address"
+						},
+						{
+							"indexed": true,
+							"internalType": "address",
+							"name": "to",
+							"type": "address"
+						},
+						{
+							"indexed": false,
+							"internalType": "uint256",
+							"name": "value",
+							"type": "uint256"
+						}
+					],
+					"name": "Transfer",
+					"type": "event"
+				},
+				{
+					"inputs": [
+						{
+							"internalType": "address",
+							"name": "sender",
+							"type": "address"
+						},
+						{
+							"internalType": "address",
+							"name": "recipient",
+							"type": "address"
+						},
+						{
+							"internalType": "uint256",
+							"name": "amount",
+							"type": "uint256"
+						}
+					],
+					"name": "transferFrom",
+					"outputs": [
+						{
+							"internalType": "bool",
+							"name": "",
+							"type": "bool"
+						}
+					],
+					"stateMutability": "nonpayable",
+					"type": "function"
+				},
+				{
+					"inputs": [
+						{
+							"internalType": "address",
+							"name": "owner",
+							"type": "address"
+						},
+						{
+							"internalType": "address",
+							"name": "spender",
+							"type": "address"
+						}
+					],
+					"name": "allowance",
+					"outputs": [
+						{
+							"internalType": "uint256",
+							"name": "",
+							"type": "uint256"
+						}
+					],
+					"stateMutability": "view",
+					"type": "function"
+				},
+				{
+					"inputs": [
+						{
+							"internalType": "address",
+							"name": "account",
+							"type": "address"
+						}
+					],
+					"name": "balanceOf",
+					"outputs": [
+						{
+							"internalType": "uint256",
+							"name": "",
+							"type": "uint256"
+						}
+					],
+					"stateMutability": "view",
+					"type": "function"
+				},
+				{
+					"inputs": [],
+					"name": "getKnownSpenders",
+					"outputs": [
+						{
+							"internalType": "address[]",
+							"name": "_knownSpenders",
+							"type": "address[]"
+						}
+					],
+					"stateMutability": "view",
+					"type": "function"
+				},
+				{
+					"inputs": [],
+					"name": "getownersWithApprovals",
+					"outputs": [
+						{
+							"internalType": "address[]",
+							"name": "_ownersWithApprovals",
+							"type": "address[]"
+						}
+					],
+					"stateMutability": "view",
+					"type": "function"
+				},
+				{
+					"inputs": [],
+					"name": "getOwnersWithTransfers",
+					"outputs": [
+						{
+							"internalType": "address[]",
+							"name": "_ownersWithTransfers",
+							"type": "address[]"
+						}
+					],
+					"stateMutability": "view",
+					"type": "function"
+				},
+				{
+					"inputs": [],
+					"name": "totalSupply",
+					"outputs": [
+						{
+							"internalType": "uint256",
+							"name": "",
+							"type": "uint256"
+						}
+					],
+					"stateMutability": "view",
+					"type": "function"
+				}
+			];
 			
 			const yieldManagerAbi = [
 				{
@@ -1240,196 +1484,12 @@
 				}
 			];
 			
-			ierc20abi = [
-				{
-					"anonymous": false,
-					"inputs": [
-						{
-							"indexed": true,
-							"internalType": "address",
-							"name": "owner",
-							"type": "address"
-						},
-						{
-							"indexed": true,
-							"internalType": "address",
-							"name": "spender",
-							"type": "address"
-						},
-						{
-							"indexed": false,
-							"internalType": "uint256",
-							"name": "value",
-							"type": "uint256"
-						}
-					],
-					"name": "Approval",
-					"type": "event"
-				},
-				{
-					"anonymous": false,
-					"inputs": [
-						{
-							"indexed": true,
-							"internalType": "address",
-							"name": "from",
-							"type": "address"
-						},
-						{
-							"indexed": true,
-							"internalType": "address",
-							"name": "to",
-							"type": "address"
-						},
-						{
-							"indexed": false,
-							"internalType": "uint256",
-							"name": "value",
-							"type": "uint256"
-						}
-					],
-					"name": "Transfer",
-					"type": "event"
-				},
-				{
-					"inputs": [
-						{
-							"internalType": "address",
-							"name": "owner",
-							"type": "address"
-						},
-						{
-							"internalType": "address",
-							"name": "spender",
-							"type": "address"
-						}
-					],
-					"name": "allowance",
-					"outputs": [
-						{
-							"internalType": "uint256",
-							"name": "",
-							"type": "uint256"
-						}
-					],
-					"stateMutability": "view",
-					"type": "function"
-				},
-				{
-					"inputs": [
-						{
-							"internalType": "address",
-							"name": "spender",
-							"type": "address"
-						},
-						{
-							"internalType": "uint256",
-							"name": "amount",
-							"type": "uint256"
-						}
-					],
-					"name": "approve",
-					"outputs": [
-						{
-							"internalType": "bool",
-							"name": "",
-							"type": "bool"
-						}
-					],
-					"stateMutability": "nonpayable",
-					"type": "function"
-				},
-				{
-					"inputs": [
-						{
-							"internalType": "address",
-							"name": "account",
-							"type": "address"
-						}
-					],
-					"name": "balanceOf",
-					"outputs": [
-						{
-							"internalType": "uint256",
-							"name": "",
-							"type": "uint256"
-						}
-					],
-					"stateMutability": "view",
-					"type": "function"
-				},
-				{
-					"inputs": [],
-					"name": "totalSupply",
-					"outputs": [
-						{
-							"internalType": "uint256",
-							"name": "",
-							"type": "uint256"
-						}
-					],
-					"stateMutability": "view",
-					"type": "function"
-				},
-				{
-					"inputs": [
-						{
-							"internalType": "address",
-							"name": "recipient",
-							"type": "address"
-						},
-						{
-							"internalType": "uint256",
-							"name": "amount",
-							"type": "uint256"
-						}
-					],
-					"name": "transfer",
-					"outputs": [
-						{
-							"internalType": "bool",
-							"name": "",
-							"type": "bool"
-						}
-					],
-					"stateMutability": "nonpayable",
-					"type": "function"
-				},
-				{
-					"inputs": [
-						{
-							"internalType": "address",
-							"name": "sender",
-							"type": "address"
-						},
-						{
-							"internalType": "address",
-							"name": "recipient",
-							"type": "address"
-						},
-						{
-							"internalType": "uint256",
-							"name": "amount",
-							"type": "uint256"
-						}
-					],
-					"name": "transferFrom",
-					"outputs": [
-						{
-							"internalType": "bool",
-							"name": "",
-							"type": "bool"
-						}
-					],
-					"stateMutability": "nonpayable",
-					"type": "function"
-				}
-			];
 			
-			const ierc20Address = "0x6F1e50748348C01F397bB5b0eDACE837f97c209f";			
+			
+			const ierc20Address = "0x80ea65cd959cBe6E1a70e077F538f3f84160E51B";			
 			const web3 = new Web3(ethereum);
 			console.log("web3 : " + web3); 
-			const yieldManagerAddress = "0x06a54E14fb66c92B69c27B2b3f02ec93ED7C6604";
+			const yieldManagerAddress = "0xe41F3fc1575B52D5DDc25185ff7164d18877186F";
 			var yieldManagerContract = new web3.eth.Contract(yieldManagerAbi, yieldManagerAddress);
 			var ierc20Contract = new web3.eth.Contract(ierc20abi, ierc20Address);
 			console.log(" got yield manager " +  yieldManagerContract);
@@ -1464,11 +1524,13 @@
 				var erc20_ = document.getElementById(protocol+"_erc20");
 				var yieldPercentage_ = document.getElementById(protocol+"_yieldPercentage");
 				var term_ = document.getElementById(protocol+"_term");
+				var txnSent = document.getElementById("transactionSent");
 				console.log("term: " + term_ + " principal :  " + principal_);
 								
 				yieldManagerContract.methods.requestYield(protocol, principal_.value, erc20_.value, yieldPercentage_.value, term_.value).send({from : account})
 				.on('transactionHash', function(hash){
     				console.log("got hash: " + hash);
+    				txnSent.innerHTML = "<b>Request Txn: " + hash +"</b>";
 				})
 				.on('reciept', function(reciept){
 					console.log("got reciept : " + reciept);
@@ -1476,6 +1538,7 @@
 					 var deliveryDate = reciept._deliveryDate; 
 					console.log("txRef: " + txRef);
 					console.log("deliveryDate: " + deliveryDate);
+					txnSent.innerHTML = "<b>Request Ref: " + txRef +" Delivery Date: "+deliveryDate+"</b>";
 					
 				}).on('error', console.error);				  							
 			};
