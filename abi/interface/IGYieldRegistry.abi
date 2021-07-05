@@ -1,0 +1,48 @@
+[
+	{
+		"inputs": [],
+		"name": "getAcceptedERC20",
+		"outputs": [
+			{
+				"internalType": "address[]",
+				"name": "_erc20s",
+				"type": "address[]"
+			},
+			{
+				"internalType": "string[]",
+				"name": "_erc20Names",
+				"type": "string[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getRegisteredProtocols",
+		"outputs": [
+			{
+				"internalType": "string[]",
+				"name": "_yieldProtocol",
+				"type": "string[]"
+			},
+			{
+				"internalType": "string[]",
+				"name": "_yieldProtocolWebsite",
+				"type": "string[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "_cancellationFeePercentage",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "bool[]",
+				"name": "_enabled",
+				"type": "bool[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]

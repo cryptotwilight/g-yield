@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html> 
+	<head> 
+		<script
+		  src="https://code.jquery.com/jquery-3.6.0.min.js"
+		  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+		  crossorigin="anonymous"></script>		
+				<script src="https://cdn.ethers.io/lib/ethers-5.0.umd.min.js" type="text/javascript">
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ethjs@0.3.4/dist/ethjs.min.js"></script>
+
+  		<link rel="shortcut icon" href="assets/images/logo/g-yield logo.png" />
+
+    <!-- META -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="uisual" content="Made with Uisual (uisual.com)">
+    <meta name="author" content="#">
+    <meta name="description" content="#">
+    <meta name="referrer" content="unsafe-url">
+    <meta name="robots" content="index, follow">
+    <!-- SPEED -->
+    <link rel="preconnect" href="https://res.cloudinary.com">
+    <link rel="dns-prefetch" href="https://res.cloudinary.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <!-- LINK -->
+    <link rel="me" href="#">
+    <link rel="canonical" href="#">
+    <link rel="icon" type="image/png" href="#" sizes="48x48">
+    <!-- PERFORMANCE -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+    <link rel="preload" as="style" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">  		
+  		
+  		
+	</head> 
+	<body> 
+	
+		<p align="center"><img src="assets/images/logo/g-yield logo.png" width="175" height="175"/></p>
+		
+		<p align="center">
+			<span id="metamask"><button id="web3connect" class="ui-component-button ui-component-button-medium ui-component-button-primary">Click to connect Metamask</button></span>
+			<br/>		 
+			<b><span class="showAccount"></span></b>
+			<br/>
+			<input type="text" min="10" placeholder="Enter USDC approve limit" id="gyieldInvestmentLimit"/>
+			<br/>
+			<br/>
+			<button id="yieldManager_approve" class="ui-component-button ui-component-button-medium ui-component-button-primary"/>Approve G-YIELD Investment Limit</button>
+			<br/>
+			<span id="erc20_approval"></span> 
+		</p>
+		
+		<table > 
+			<tr> 
+			
+				<!-- right column --> 
+				<td> 
+					<table >
+						<!-- 88mph -->
+						<tr>
+							<!-- logo -->
+							<td>
+								<h2>88mph</h2>
+								<img src="assets/images/logo/88mph-logo-dark.png" width="100"  height="100"/>
+							</td>
+							<!--// end logo -->
+							<!-- product -->
+							<td>
+								<table>
+									<tr> 
+										<th>Invest Term</th>
+										<th>Max Yield</th>
+										<th>Min Investment</th>
+										<th>Max Investment</th>
+									</tr>														
+									<tr>
+										<td>1 day</td>
+										<td>2%</td>
+										<td>USDC 100</td>
+										<td>USDC 10k</td>
+									</tr>
+									<tr>
+										<td>7 day</td>
+										<td>10%</td>
+										<td>USDC 1k</td>
+										<td>USDC 100k</td>
+									</tr>
+									<tr>
+										<td>30 day</td>
+										<td>20%</td>
+										<td>USDC 10k</td>
+										<td>USDC 1m</td>
+									</tr>
+								</table>
+							</td>
+							<!-- // end product --> 
+							<!-- action --> 
+							<td>
+								<table>
+									<tr>
+										<th colspan="2">Invest</th> 
+									</tr> 
+									<tr>
+										<td><b>Max Term:</b></td>									
+										<td >
+											<select id="88mph_term">
+												<option value="1" >1 day</option>
+												<option value="7">7 day</option>
+												<option value="30" selected>30 day</option>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td><b>Investment:</b></td>									
+										<td >
+											<input type="text" id="88mph_principal" placeholder="USDC amount" autocomplete="on" required />
+										</td>
+									</tr>
+									<tr>
+										<td><b>Yield:</b></td>									
+										<td >
+											<input type="range" min="1" max="30" value="2" class="slider-square" id="88mph_yieldPercentage"/> <span id="88mph_slider_value"></span>
+										</td>
+									</tr>
+									<tr>
+										<td></td>									
+										<td >
+											<button id="88mph_invest" class="ui-component-button ui-component-button-medium ui-component-button-primary">Invest</button>
+											<input type="hidden" id="88mph_erc20" value="0x6F1e50748348C01F397bB5b0eDACE837f97c209f" />
+											<input type="hidden" id="88mph_yieldProtocol" value="88mph"/>
+										</td>
+									</tr>
+								</table>
+							</td>
+							<!-- // end action --> 
+						</tr>
+						<!-- // end 88mph --> 
+						
+						
+						<!-- compound -->
+						<tr>
+							<td><h2>Compound</h2><img src="assets/images/logo/compound-comp-logo.png" width="100"  height="100"/></td>
+							<td>
+								<table>
+									<tr> 
+										<th>Invest Term</th>
+										<th>Max Yield</th>
+										<th>Min Investment</th>
+										<th>Max Investment</th>
+									</tr>														
+									<tr>
+										<td>1 day</td>
+										<td>2%</td>
+										<td>USDC 100</td>
+										<td>USDC 10k</td>
+									</tr>
+									<tr>
+										<td>7 day</td>
+										<td>10%</td>
+										<td>USDC 1k</td>
+										<td>USDC 100k</td>
+									</tr>
+									<tr>
+										<td>30 day</td>
+										<td>20%</td>
+										<td>USDC 10k</td>
+										<td>USDC 1m</td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table>
+									<tr>
+										<th colspan="2">Invest</th> 
+									</tr> 
+									<tr>
+										<td><b>Max Term:</b></td>									
+										<td >
+											<select id="compound_term">
+												<option value="1" >1 day</option>
+												<option value="7">7 day</option>
+												<option value="30" selected>30 day</option>
+									  		</select>
+										</td>
+									</tr>
+									<tr>
+										<td><b>Investment:</b></td>									
+										<td >
+											<input type="text" id="compound_principal" placeholder="USDC amount" autocomplete="on" required/>
+										</td>
+									</tr>
+									<tr>
+										<td><b>Yield:</b></td>									
+										<td >
+											<input type="range" id="compound_yieldPercentage" min="1" max="30" value="2" class="slider-square" id="myRange"><span id="value"></span>
+										</td>
+									</tr>
+									<tr>
+										<td></td>									
+										<td >
+											<button  id="compound_invest" class="ui-component-button ui-component-button-medium ui-component-button-primary">Invest</button>
+											<input type="hidden" id="compound_erc20" value="0x6F1e50748348C01F397bB5b0eDACE837f97c209f" />
+											<input type="hidden" id="compound_yieldProtocol" value="compound"/>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<!-- // end compound -->
+						
+						<!-- idle -->
+						<tr>
+							<td><h2>Idle</h2><img src="assets/images/logo/idle-logo.png" width="100"  height="100"/></td>
+							<td>
+								<table>
+									<tr> 
+										<th>Invest Term</th>
+										<th>Max Yield</th>
+										<th>Min Investment</th>
+										<th>Max Investment</th>
+									</tr>														
+									<tr>
+										<td>1 day</td>
+										<td>2%</td>
+										<td>USDC 100</td>
+										<td>USDC 10k</td>
+									</tr>
+									<tr>
+										<td>7 day</td>
+										<td>10%</td>
+										<td>USDC 1k</td>
+										<td>USDC 100k</td>
+									</tr>
+									<tr>
+										<td>30 day</td>
+										<td>20%</td>
+										<td>USDC 10k</td>
+										<td>USDC 1m</td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table>
+									<tr>
+										<th colspan="2">Invest</th> 
+									</tr> 
+									<tr>
+										<td><b>Max Term:</b></td>									
+										<td >
+											<select id="idle_term">
+												<option value="1" >1 day</option>
+												<option value="7">7 day</option>
+												<option value="30" selected>30 day</option>
+									  		</select>
+										</td>
+									</tr>
+									<tr>
+										<td><b>Investment:</b></td>									
+										<td >
+											<input type="text" id="idle_principal" placeholder="USDC amount" autocomplete="on" required/>
+										</td>
+									</tr>
+									<tr>
+										<td><b>Yield:</b></td>									
+										<td >
+											<input type="range" id="idle_yieldPercentage" min="1" max="30" value="2" class="slider-square" id="myRange"><span id="value"></span>
+										</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td >
+											<button id="idle_invest" class="ui-component-button ui-component-button-medium ui-component-button-primary">Invest</button>
+											<input type="hidden" id="idle_erc20" value="0x6F1e50748348C01F397bB5b0eDACE837f97c209f" />
+											<input type="hidden" id="idle_yieldProtocol" value="idle"/>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<!-- // end idle --> 
+						
+						<!-- stake dao -->
+						<tr>
+							<td><h2>Stake DAO</h2><img src="assets/images/logo/stake dao1611223377376.png" width="100"  height="100"/></td>
+							<td>
+								<table>
+									<tr> 
+										<th>Invest Term</th>
+										<th>Max Yield</th>
+										<th>Min Investment</th>
+										<th>Max Investment</th>
+									</tr>														
+									<tr>
+										<td>1 day</td>
+										<td>2%</td>
+										<td>USDC 100</td>
+										<td>USDC 10k</td>
+									</tr>
+									<tr>
+										<td>7 day</td>
+										<td>10%</td>
+										<td>USDC 1k</td>
+										<td>USDC 100k</td>
+									</tr>
+									<tr>
+										<td>30 day</td>
+										<td>20%</td>
+										<td>USDC 10k</td>
+										<td>USDC 1m</td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table>
+									<tr>
+										<th colspan="2">Invest</th> 
+									</tr> 
+									<tr>
+										<td><b>Max Term:</b></td>
+										<td >
+											<select id="stakedao_term">
+												<option value="1" >1 day</option>
+												<option value="7">7 day</option>
+												<option value="30" selected>30 day</option>
+									  		</select>
+										</td>
+									</tr>
+									<tr>
+										<td><b>Investment:</b></td>									
+										<td >
+											<input type="text" id="stakedao_principal" placeholder="USDC amount" autocomplete="on" required/>
+										</td>
+									</tr>
+									<tr>
+										<td><b>Yield:</b></td>									
+										<td >
+											<input type="range" id="stakedao_yieldPercentage" min="1" max="30" value="2" class="slider-square" id="myRange"><span id="value"></span>
+										</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td >
+											<button id="stakedao_invest" class="ui-component-button ui-component-button-medium ui-component-button-primary">Invest</button>
+											<input type="hidden" id="stakedao_erc20" value="0x6F1e50748348C01F397bB5b0eDACE837f97c209f" />
+											<input type="hidden" id="stakedao_yieldProtocol" value="stakedao"/>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<!-- // stakeDao -->
+						
+						<!-- pods --> 
+						<tr>
+							<td><h2>Pods</h2><img src="assets/images/logo/pods_network.png" width="100"  height="100"/></td>
+							<td>
+								<table>
+									<tr> 
+										<th>Invest Term</th>
+										<th>Max Yield</th>
+										<th>Min Investment</th>
+										<th>Max Investment</th>
+									</tr>														
+									<tr>
+										<td>1 day</td>
+										<td>2%</td>
+										<td>USDC 100</td>
+										<td>USDC 10k</td>
+									</tr>
+									<tr>
+										<td>7 day</td>
+										<td>10%</td>
+										<td>USDC 1k</td>
+										<td>USDC 100k</td>
+									</tr>
+									<tr>
+										<td>30 day</td>
+										<td>20%</td>
+										<td>USDC 10k</td>
+										<td>USDC 1m</td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table>
+									<tr>
+										<th colspan="2">Invest</th> 
+									</tr> 
+									<tr>
+										<td><b>Max Term:</b></td>
+										<td >
+											<select id="pods_term">
+												<option value="1" >1 day</option>
+												<option value="7">7 day</option>
+												<option value="30" selected>30 day</option>
+									  		</select>
+										</td>
+									</tr>
+									<tr>
+										<td><b>Investment:</b></td>									
+										<td >
+											<input type="text" id="pods_principal" placeholder="USDC amount" autocomplete="on" required/>
+										</td>
+									</tr>
+									<tr>
+										<td><b>Yield:</b></td>									
+										<td >
+											<input type="range" id="pods_yieldPercentage" min="1" max="30" value="2" class="slider-square"><span id="value"></span>
+										</td>
+									</tr>
+									<tr>
+										<td></td>	
+										<td >
+											<button id="pods_invest" class="ui-component-button ui-component-button-medium ui-component-button-primary">Invest</button>
+											<input type="hidden" id="pods_erc20" value="0x6F1e50748348C01F397bB5b0eDACE837f97c209f" />
+											<input type="hidden" id="pods_yieldProtocol" value="pods"/>
+										</td>
+									</tr>
+								</table>
+							</td>
+											
+						</tr>
+						<!-- // end pods --> 
+						
+						<!-- bitgo --> 
+						<tr>
+							<td><h2>Bitgo</h2><img src="assets/images/logo/bitgo-shield-logo.svg" width="100"  height="100"/></td>
+							<td>
+								<table>
+									<tr> 
+										<th>Invest Term</th>
+										<th>Max Yield</th>
+										<th>Min Investment</th>
+										<th>Max Investment</th>
+									</tr>														
+									<tr>
+										<td>1 day</td>
+										<td>2%</td>
+										<td>USDC 100</td>
+										<td>USDC 10k</td>
+									</tr>
+									<tr>
+										<td>7 day</td>
+										<td>10%</td>
+										<td>USDC 1k</td>
+										<td>USDC 100k</td>
+									</tr>
+									<tr>
+										<td>30 day</td>
+										<td>20%</td>
+										<td>USDC 10k</td>
+										<td>USDC 1m</td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table>
+									<tr>
+										<th colspan="2">Invest</th> 
+									</tr> 
+									<tr>
+										<td><b>Max Term:</b></td>
+										<td >
+											<select id="bitgo_term">
+												<option value="1" >1 day</option>
+												<option value="7">7 day</option>
+												<option value="30" selected>30 day</option>
+									  		</select>
+										</td>
+									</tr>
+									<tr>
+										<td><b>Investment:</b></td>									
+										<td >
+											<input type="text" id="bitgo_principal" placeholder="USDC amount" autocomplete="on" required/>
+										</td>
+									</tr>
+									<tr>
+										<td><b>Yield:</b></td>									
+										<td >
+											<input type="range" id="bitgo_yieldPercentage" min="1" max="30" value="2" class="slider-square" id="myRange"><span id="value"></span>
+										</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td >
+											<button  id="bitgo_invest" class="ui-component-button ui-component-button-medium ui-component-button-primary">Invest</button>
+											<input type="hidden" id="bitgo_erc20" value="0x6F1e50748348C01F397bB5b0eDACE837f97c209f" />
+											<input type="hidden" id="bitgo_yieldProtocol" value="bitgo"/>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<!-- // end bitgo -->
+						
+						<!-- badger dao --> 
+						<tr>
+							<td><h2>Badger DAO</h2><img src="assets/images/logo/badgerdao.png" width="100"  height="100"/></td>
+							<td>
+								<table>
+									<tr> 
+										<th>Invest Term</th>
+										<th>Max Yield</th>
+										<th>Min Investment</th>
+										<th>Max Investment</th>
+									</tr>														
+									<tr>
+										<td>1 day</td>
+										<td>2%</td>
+										<td>USDC 100</td>
+										<td>USDC 10k</td>
+									</tr>
+									<tr>
+										<td>7 day</td>
+										<td>10%</td>
+										<td>USDC 1k</td>
+										<td>USDC 100k</td>
+									</tr>
+									<tr>
+										<td>30 day</td>
+										<td>20%</td>
+										<td>USDC 10k</td>
+										<td>USDC 1m</td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table>
+									<tr>
+										<th colspan="2">Invest</th> 
+									</tr> 
+									<tr>
+										<td><b>Max Term:</b></td>									
+										<td >
+											<select id="badgerdao_term">
+												<option value="1" >1 day</option>
+												<option value="7">7 day</option>
+												<option value="30" selected>30 day</option>
+									  		</select>
+										</td>
+									</tr>
+									<tr>
+										<td><b>Investment:</b></td>									
+										<td >
+											<input type="text" id="badgerdao_principal" placeholder="USDC amount" autocomplete="on" required/>
+										</td>
+									</tr>
+									<tr>
+										<td><b>Yield:</b></td>									
+										<td >
+											<input type="range" id="badgerdao_yieldPercentage" min="1" max="30" value="2" class="slider-square" id="myRange"><span id="value"></span>
+										</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td >
+											<button id="badgerdao_invest" class="ui-component-button ui-component-button-medium ui-component-button-primary">Invest</button>
+											<input type="hidden" id="badgerdao_erc20" value="0x6F1e50748348C01F397bB5b0eDACE837f97c209f" />
+											<input type="hidden" id="badgerdao_yieldProtocol" value="bitgo"/>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<!-- // end badger dao -->
+						
+						<!--  liquity -->
+						<tr>
+							<td><h2>Liquity</h2><img src="assets/images/logo/liquity.jpg" width="100"  height="100"/></td>
+							<td>
+								<table>
+									<tr> 
+										<th>Invest Term</th>
+										<th>Max Yield</th>
+										<th>Min Investment</th>
+										<th>Max Investment</th>
+									</tr>														
+									<tr>
+										<td>1 day</td>
+										<td>2%</td>
+										<td>USDC 100</td>
+										<td>USDC 10k</td>
+									</tr>
+									<tr>
+										<td>7 day</td>
+										<td>10%</td>
+										<td>USDC 1k</td>
+										<td>USDC 100k</td>
+									</tr>
+									<tr>
+										<td>30 day</td>
+										<td>20%</td>
+										<td>USDC 10k</td>
+										<td>USDC 1m</td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table>
+									<tr>
+										<th colspan="2">Invest</th> 
+									</tr> 
+									<tr>
+										<td><b>Max Term:</b></td>
+										<td >										
+											<select id="liquity_term">
+												<option value="1" >1 day</option>
+												<option value="7">7 day</option>
+												<option value="30" selected>30 day</option>
+									  		</select>
+										</td>
+									</tr>
+									<tr>
+										<td><b>Investment:</b></td>									
+										<td >
+											<input type="text" id="liquity_principal" placeholder="USDC amount" autocomplete="on" required/>
+										</td>
+									</tr>
+									<tr>
+										<td><b>Yield:</b></td>									
+										<td >
+											<input type="range" id="liquity_range" min="1" max="30" value="2" class="slider-square" id="myRange"><span id="value"></span>
+										</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td >
+											<button id="liquity_invest" class="ui-component-button ui-component-button-medium ui-component-button-primary" >Invest</button>
+											<input type="hidden" id="liquity_erc20" value="0x6F1e50748348C01F397bB5b0eDACE837f97c209f" />
+											<input type="hidden" id="liquity_yieldProtocol" value="liquity"/>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<!-- // end liquity -->
+						
+						<!-- element fi --> 
+						<tr>
+							<td><h2>Element Fi</h2><img src="assets/images/logo/element-fi-logo.svg" width="100"  height="100"/></td>
+							<td>
+								<table>
+									<tr> 
+										<th>Invest Term</th>
+										<th>Max Yield</th>
+										<th>Min Investment</th>
+										<th>Max Investment</th>
+									</tr>														
+									<tr>
+										<td>1 day</td>
+										<td>2%</td>
+										<td>USDC 100</td>
+										<td>USDC 10k</td>
+									</tr>
+									<tr>
+										<td>7 day</td>
+										<td>10%</td>
+										<td>USDC 1k</td>
+										<td>USDC 100k</td>
+									</tr>
+									<tr>
+										<td>30 day</td>
+										<td>20%</td>
+										<td>USDC 10k</td>
+										<td>USDC 1m</td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table>
+									<tr>
+										<th colspan="2">Invest</th> 
+									</tr> 
+									<tr>
+										<td><b>Max Term:</b></td>									
+										<td >
+											<select id="elementfi_term">
+												<option value="1" >1 day</option>
+												<option value="7">7 day</option>
+												<option value="30" selected>30 day</option>
+									  		</select>
+										</td>
+									</tr>
+									<tr>
+										<td><b>Investment:</b></td>									
+										<td >
+											<input type="text" id="elementfi_term" placeholder="USDC amount" autocomplete="on" required/>
+										</td>
+									</tr>
+									<tr>
+										<td><b>Yield:</b></td>									
+										<td >
+											<input type="range" id="elementfi_yieldPercentage" min="1" max="30" value="2" class="slider-square" id="myRange"><span id="value"></span>
+										</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td >
+											<button id="elementfi_invest" class="ui-component-button ui-component-button-medium ui-component-button-primary">Invest</button>
+											<input type="hidden" id="elementfi_erc20" value="0x6F1e50748348C01F397bB5b0eDACE837f97c209f" />
+											<input type="hidden" id="elementfi_yieldProtocol" value="elementfi"/>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<!-- // end element fi -->
+						
+						<!-- vega -->
+						<tr>
+							<td><h2>Vega</h2><img src="assets/images/logo/vega 10223.png" width="100"  height="100"/></td>
+							<td>
+								<table>
+									<tr> 
+										<th>Invest Term</th>
+										<th>Max Yield</th>
+										<th>Min Investment</th>
+										<th>Max Investment</th>
+									</tr>														
+									<tr>
+										<td>1 day</td>
+										<td>2%</td>
+										<td>USDC 100</td>
+										<td>USDC 10k</td>
+									</tr>
+									<tr>
+										<td>7 day</td>
+										<td>10%</td>
+										<td>USDC 1k</td>
+										<td>USDC 100k</td>
+									</tr>
+									<tr>
+										<td>30 day</td>
+										<td>20%</td>
+										<td>USDC 10k</td>
+										<td>USDC 1m</td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table>
+									<tr>
+										<th colspan="2">Invest</th> 
+									</tr> 
+									<tr>
+										<td><b>Max Term:</b></td>
+										<td >
+											<select id="vega_term">
+												<option value="1" >1 day</option>
+												<option value="7">7 day</option>
+												<option value="30" selected>30 day</option>
+									  		</select>
+										</td>
+									</tr>
+									<tr>
+										<td><b>Investment:</b></td>									
+										<td >
+											<input type="text" id="vega_principal" placeholder="USDC amount" autocomplete="on" required/>
+										</td>
+									</tr>
+									<tr>
+										<td><b>Yield:</b></td>									
+										<td >
+											<input type="range" id="vega_yieldPercentage" min="1" max="30" value="2" class="slider-square" id="myRange"><span id="value"></span>
+										</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td >
+											<button  id="vega_invest" class="ui-component-button ui-component-button-medium ui-component-button-primary" >Invest</button>
+											<input type="hidden" id="vega_erc20" value="0x6F1e50748348C01F397bB5b0eDACE837f97c209f" />
+											<input type="hidden" id="vega_yieldProtocol" value="vega"/>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<!-- // end vega --> 
+						
+						<!-- akropolis --> 
+				
+						<tr>
+							<td><h2>Akropolis</h2><img src="assets/images/logo/akropolis-akro-logo.png" width="100"  height="100"/></td>
+							<td>
+								<table>
+									<tr> 
+										<th>Invest Term</th>
+										<th>Max Yield</th>
+										<th>Min Investment</th>
+										<th>Max Investment</th>
+									</tr>														
+									<tr>
+										<td>1 day</td>
+										<td>2%</td>
+										<td>USDC 100</td>
+										<td>USDC 10k</td>
+									</tr>
+									<tr>
+										<td>7 day</td>
+										<td>10%</td>
+										<td>USDC 1k</td>
+										<td>USDC 100k</td>
+									</tr>
+									<tr>
+										<td>30 day</td>
+										<td>20%</td>
+										<td>USDC 10k</td>
+										<td>USDC 1m</td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table>
+									<tr>
+										<th colspan="2">Invest</th> 
+									</tr> 
+									<tr>
+										<td><b>Max Term:</b></td>
+										<td >
+											<select id="akropolis_term">
+												<option value="1" >1 day</option>
+												<option value="7">7 day</option>
+												<option value="30" selected>30 day</option>
+									  		</select>
+										</td>
+									</tr>
+									<tr>
+										<td><b>Investment:</b></td>
+										<td >
+											<input type="text" id="akropolis_principal" placeholder="USDC amount" autocomplete="on" required/>
+										</td>
+									</tr>
+									<tr>
+										<td><b>Yield:</b></td>
+										<td align="Left">
+											<input type="range" id="akropolis_yieldPercentage" min="1" max="30" value="2" class="slider-square" id="myRange"><span id="value"></span>
+										</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td align="left">
+											<button id="akropolis_invest" type="submit" class="ui-component-button ui-component-button-medium ui-component-button-primary">Invest</button>
+											<input type="hidden" id="akropolis_erc20" value="0x6F1e50748348C01F397bB5b0eDACE837f97c209f" />
+											<input type="hidden" id="akropolis_yieldProtocol" value="akropolis"/>
+										</td>
+									</tr>
+								</table>
+							</td>
+							
+						</tr>
+						
+						<!-- // end akropolis -->
+						
+						<!-- oracles -->
+						<tr>
+							<td colspan="3" align="center">
+							<table>
+								<tr> 
+									<td><img src="assets\images\logo\trb.png" width="75" height="75"/> </td>
+									<td><img src="assets\images\logo\umbrella network1612198796685.png" width="75" height="75"/> </td>
+									<td><img src="assets\images\logo\chainlink-link-logo.png" width="75" height="75"/> </td>
+								</tr>
+							</table>
+							</td>
+						</tr> 
+						 <!-- // end oracles -->
+				
+						
+					</table>	
+		
+				</td>
+				<!-- // end left column --> 
+				
+				<!-- right column --> 
+				<td valign="top">
+					<center><h1>Yield Request History</h1></center>
+					<h3>Total Locked Principal (USDC) : 0</h3><h3>Total Locked Earnings (USDC) : 0</h3>
+					<table> 
+						<tr>
+							<th>Yield Request ID</th><th>Protocol</th><th>Principal</th><th>Currency</th><th>Requested Yield(%)</th><th>Request Date</th><th>Maturity Date</th><th>Request Status</th><th></th><th></td>
+						</tr>
+						<tr>
+							<td>01</td><td>MOCK</td><td>100</td><td>5</td><td>USDC</td><td>00/00/00</td><td>00/00/00</td><td>Pending</td><td><a href="">view</a></td><td><input type="button" value="cancel"/>
+							<br/>Variable Cancellation Fee: 2% (0.02)</td>
+						</tr> 
+						<tr>
+							<td>01</td><td>MOCK</td><td>100</td><td>5</td><td>USDC</td><td>00/00/00</td><td>00/00/00</td><td>Complete</td><td><a href="">view</a></td><td><input type="button" value="withdraw"/></td>
+						</tr> 
+					</table>
+				</td>
+				<!-- // end right column --> 
+			</tr>
+		</table>
+		
+		
+		    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/animation.js"></script>
+    <script src="assets/js/imagesloaded.js"></script>
+    <script src="assets/js/custom.js"></script>
+		<script>
+			//import MetaMaskOnboarding from '@metamask/onboarding';
+			//Basic Actions Section
+			const onboardButton = document.getElementById('web3connect');
+			const metamask = document.getElementById('metamask');
+			
+			console.log("got connect button : "+ onboardButton );
+			
+			const getAccountsButton = document.getElementById('getAccounts');
+			const getAccountsResult = document.getElementById('getAccountsResult');
+			const showAccount = document.querySelector('.showAccount');
+			 
+			var account;
+	
+			  //Created check function to see if the MetaMask extension is installed
+			const isMetaMaskInstalled = () => {
+				//Have to check the ethereum binding on the window object to see if it's installed
+				const { ethereum } = window;
+				return Boolean(ethereum && ethereum.isMetaMask);
+			};
+			
+			const MetaMaskClientCheck = () => {
+				  //Now we check to see if Metmask is installed
+				  if (!isMetaMaskInstalled()) {
+					  console.log("metamask not installed");
+					//If it isn't installed we ask the user to click to install it
+					onboardButton.innerText = 'Click here to install MetaMask!';
+					//When the button is clicked we call this function
+					onboardButton.onclick = onClickInstall;
+					//The button is now disabled
+					onboardButton.disabled = false;
+				  } else {
+					//If it is installed we change our button text
+					onboardButton.innerText = 'Click to Connect Metamask';
+					console.log("metamask installed");
+					onboardButton.addEventListener('click', () => {
+						  getAccount();
+					});
+				  }
+				};
+			const initialize = () => {							  
+			  	MetaMaskClientCheck();
+			  
+			};
+			window.addEventListener('DOMContentLoaded', initialize);
+
+			async function getAccount() {
+			  const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+			  account = accounts[0];
+			  showAccount.innerHTML = account;
+			  metamask.innerHTML = "<img src='assets/images/logo/metamask.png' width=50 height=40/></br>Your Account: "
+			}
+					
+			//We create a new MetaMask onboarding object to use in our app
+			//const onboarding = new MetaMaskOnboarding({ forwarderOrigin });
+
+			//This will start the onboarding proccess
+			const onClickInstall = () => {
+			  onboardButton.innerText = 'Onboarding in progress';
+			  onboardButton.disabled = true;
+			  //On this object we have startOnboarding which will start the onboarding process for our end user
+			  onboarding.startOnboarding();
+			};
+					
+			const onClickConnect = async () => {
+			  try {
+				// Will open the MetaMask UI
+				// You should disable this button while the request is pending!
+				await ethereum.request({ method: 'eth_requestAccounts' });
+			  } catch (error) {
+				console.error(error);
+			  }
+			};
+
+			//Eth_Accounts-getAccountsButton
+	//		getAccountsButton.addEventListener('click', async () => {
+			  //we use eth_accounts because it returns a list of addresses owned by us.
+		//	  const accounts = await ethereum.request({ method: 'eth_accounts' });
+		//	  //We take the first address in the array of addresses and display it
+		//	  getAccountsResult.innerHTML = accounts[0] || 'Not able to get accounts';
+		//	});
+
+			
+			const yieldManagerAbi = [
+				{
+					"inputs": [
+						{
+							"internalType": "string",
+							"name": "_yieldProtocol",
+							"type": "string"
+						},
+						{
+							"internalType": "uint256",
+							"name": "_txRef",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "_cancellationFee",
+							"type": "uint256"
+						}
+					],
+					"name": "cancelYieldRequest",
+					"outputs": [
+						{
+							"internalType": "uint256",
+							"name": "_cancellationTxnRef",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "_cancellationDate",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "_totalAmountReturned",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "_principalReturned",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "_earningsReturned",
+							"type": "uint256"
+						}
+					],
+					"stateMutability": "payable",
+					"type": "function"
+				},
+				{
+					"inputs": [],
+					"name": "getYieldRequestsForAddress",
+					"outputs": [
+						{
+							"internalType": "uint256[]",
+							"name": "_txRefs",
+							"type": "uint256[]"
+						},
+						{
+							"internalType": "string[]",
+							"name": "_yieldProtocols",
+							"type": "string[]"
+						},
+						{
+							"internalType": "uint256[]",
+							"name": "_principals",
+							"type": "uint256[]"
+						},
+						{
+							"internalType": "uint256[]",
+							"name": "_yieldPercentages",
+							"type": "uint256[]"
+						},
+						{
+							"internalType": "uint256[]",
+							"name": "_yieldRequestDates",
+							"type": "uint256[]"
+						},
+						{
+							"internalType": "uint256[]",
+							"name": "_yieldMaturityDates",
+							"type": "uint256[]"
+						},
+						{
+							"internalType": "string[]",
+							"name": "_yieldRequestStatuses",
+							"type": "string[]"
+						},
+						{
+							"internalType": "uint256",
+							"name": "_totalLockedPrincipleUSD",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "_totalLockedEarningsUSD",
+							"type": "uint256"
+						}
+					],
+					"stateMutability": "nonpayable",
+					"type": "function"
+				},
+				{
+					"inputs": [
+						{
+							"internalType": "string",
+							"name": "_yieldProtocol",
+							"type": "string"
+						},
+						{
+							"internalType": "uint256",
+							"name": "_principal",
+							"type": "uint256"
+						},
+						{
+							"internalType": "address",
+							"name": "_erc20",
+							"type": "address"
+						},
+						{
+							"internalType": "uint256",
+							"name": "_yieldPercentage",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "_term",
+							"type": "uint256"
+						}
+					],
+					"name": "requestYield",
+					"outputs": [
+						{
+							"internalType": "uint256",
+							"name": "_txnRef",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "_deliveryDate",
+							"type": "uint256"
+						}
+					],
+					"stateMutability": "payable",
+					"type": "function"
+				},
+				{
+					"inputs": [
+						{
+							"internalType": "string",
+							"name": "_yieldProtocol",
+							"type": "string"
+						},
+						{
+							"internalType": "uint256",
+							"name": "_txRef",
+							"type": "uint256"
+						}
+					],
+					"name": "reviewYield",
+					"outputs": [
+						{
+							"internalType": "string",
+							"name": "_protocol",
+							"type": "string"
+						},
+						{
+							"internalType": "uint256",
+							"name": "_principal",
+							"type": "uint256"
+						},
+						{
+							"internalType": "address",
+							"name": "_erc20",
+							"type": "address"
+						},
+						{
+							"internalType": "uint256",
+							"name": "_yieldPercentage",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "_term",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "_deliveryDate",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "_percentageComplete",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "_earnedToDate",
+							"type": "uint256"
+						},
+						{
+							"internalType": "string",
+							"name": "_yieldStatus",
+							"type": "string"
+						}
+					],
+					"stateMutability": "nonpayable",
+					"type": "function"
+				},
+				{
+					"inputs": [
+						{
+							"internalType": "string",
+							"name": "_yieldProtocol",
+							"type": "string"
+						},
+						{
+							"internalType": "uint256",
+							"name": "_txRef",
+							"type": "uint256"
+						}
+					],
+					"name": "withdrawYield",
+					"outputs": [
+						{
+							"internalType": "uint256",
+							"name": "_txnRef",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "_principalReturned",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "_earningsReturned",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "_totalReturned",
+							"type": "uint256"
+						}
+					],
+					"stateMutability": "payable",
+					"type": "function"
+				}
+			];
+			
+			ierc20abi = [
+				{
+					"anonymous": false,
+					"inputs": [
+						{
+							"indexed": true,
+							"internalType": "address",
+							"name": "owner",
+							"type": "address"
+						},
+						{
+							"indexed": true,
+							"internalType": "address",
+							"name": "spender",
+							"type": "address"
+						},
+						{
+							"indexed": false,
+							"internalType": "uint256",
+							"name": "value",
+							"type": "uint256"
+						}
+					],
+					"name": "Approval",
+					"type": "event"
+				},
+				{
+					"anonymous": false,
+					"inputs": [
+						{
+							"indexed": true,
+							"internalType": "address",
+							"name": "from",
+							"type": "address"
+						},
+						{
+							"indexed": true,
+							"internalType": "address",
+							"name": "to",
+							"type": "address"
+						},
+						{
+							"indexed": false,
+							"internalType": "uint256",
+							"name": "value",
+							"type": "uint256"
+						}
+					],
+					"name": "Transfer",
+					"type": "event"
+				},
+				{
+					"inputs": [
+						{
+							"internalType": "address",
+							"name": "owner",
+							"type": "address"
+						},
+						{
+							"internalType": "address",
+							"name": "spender",
+							"type": "address"
+						}
+					],
+					"name": "allowance",
+					"outputs": [
+						{
+							"internalType": "uint256",
+							"name": "",
+							"type": "uint256"
+						}
+					],
+					"stateMutability": "view",
+					"type": "function"
+				},
+				{
+					"inputs": [
+						{
+							"internalType": "address",
+							"name": "spender",
+							"type": "address"
+						},
+						{
+							"internalType": "uint256",
+							"name": "amount",
+							"type": "uint256"
+						}
+					],
+					"name": "approve",
+					"outputs": [
+						{
+							"internalType": "bool",
+							"name": "",
+							"type": "bool"
+						}
+					],
+					"stateMutability": "nonpayable",
+					"type": "function"
+				},
+				{
+					"inputs": [
+						{
+							"internalType": "address",
+							"name": "account",
+							"type": "address"
+						}
+					],
+					"name": "balanceOf",
+					"outputs": [
+						{
+							"internalType": "uint256",
+							"name": "",
+							"type": "uint256"
+						}
+					],
+					"stateMutability": "view",
+					"type": "function"
+				},
+				{
+					"inputs": [],
+					"name": "totalSupply",
+					"outputs": [
+						{
+							"internalType": "uint256",
+							"name": "",
+							"type": "uint256"
+						}
+					],
+					"stateMutability": "view",
+					"type": "function"
+				},
+				{
+					"inputs": [
+						{
+							"internalType": "address",
+							"name": "recipient",
+							"type": "address"
+						},
+						{
+							"internalType": "uint256",
+							"name": "amount",
+							"type": "uint256"
+						}
+					],
+					"name": "transfer",
+					"outputs": [
+						{
+							"internalType": "bool",
+							"name": "",
+							"type": "bool"
+						}
+					],
+					"stateMutability": "nonpayable",
+					"type": "function"
+				},
+				{
+					"inputs": [
+						{
+							"internalType": "address",
+							"name": "sender",
+							"type": "address"
+						},
+						{
+							"internalType": "address",
+							"name": "recipient",
+							"type": "address"
+						},
+						{
+							"internalType": "uint256",
+							"name": "amount",
+							"type": "uint256"
+						}
+					],
+					"name": "transferFrom",
+					"outputs": [
+						{
+							"internalType": "bool",
+							"name": "",
+							"type": "bool"
+						}
+					],
+					"stateMutability": "nonpayable",
+					"type": "function"
+				}
+			];
+			
+			const ierc20Address = "0x6F1e50748348C01F397bB5b0eDACE837f97c209f";			
+			const web3 = new Web3(ethereum);
+			console.log("web3 : " + web3); 
+			const yieldManagerAddress = "0x06a54E14fb66c92B69c27B2b3f02ec93ED7C6604";
+			var yieldManagerContract = new web3.eth.Contract(yieldManagerAbi, yieldManagerAddress);
+			var ierc20Contract = new web3.eth.Contract(ierc20abi, ierc20Address);
+			console.log(" got yield manager " +  yieldManagerContract);
+
+			const approveGYield = () => {
+				  var gyieldInvestmentLimit = document.getElementById("gyieldInvestmentLimit");
+				  
+				  var approve = document.getElementById("erc20_approval");
+				  
+				  console.log(" investment value: " + gyieldInvestmentLimit.value);
+				  console.log(" account: " + account);
+				  
+				  ierc20Contract.methods.approve(yieldManagerAddress, gyieldInvestmentLimit.value).send({from: account })
+				  .on('transactionHash', function(hash){
+    				console.log("got hash: " + hash);
+    				approve.innerHTML = "Approve Transaction: <b>"+ hash +"</b>"; 
+				  })
+				  .on('reciept', function(reciept){
+					console.log("got reciept : " + reciept);
+					  
+				  }).on('error', console.error);				  				  				 
+			};
+						
+			const yieldManagerApproveButton = document.getElementById("yieldManager_approve");
+			yieldManagerApproveButton.onclick = approveGYield;
+			
+		
+			
+			function requestYield (protocol) {
+				console.log("protocol: " + protocol);								
+				var principal_ = document.getElementById(protocol+"_principal");
+				var erc20_ = document.getElementById(protocol+"_erc20");
+				var yieldPercentage_ = document.getElementById(protocol+"_yieldPercentage");
+				var term_ = document.getElementById(protocol+"_term");
+				console.log("term: " + term_ + " principal :  " + principal_);
+								
+				yieldManagerContract.methods.requestYield(protocol, principal_.value, erc20_.value, yieldPercentage_.value, term_.value).send({from : account})
+				.on('transactionHash', function(hash){
+    				console.log("got hash: " + hash);
+				})
+				.on('reciept', function(reciept){
+					console.log("got reciept : " + reciept);
+					 var txRef = reciept._txRef; 
+					 var deliveryDate = reciept._deliveryDate; 
+					console.log("txRef: " + txRef);
+					console.log("deliveryDate: " + deliveryDate);
+					
+				}).on('error', console.error);				  							
+			};
+			
+			// 88 mph
+			const requestYield88mph = () => {
+				requestYield("88mph");
+			} 
+			const mph88Button = document.getElementById("88mph_invest");
+			mph88Button.onclick = requestYield88mph; 
+		
+			
+			// compound 
+			const requestYieldCompound = () => {
+				requestYield("compound");
+			} 
+			const compoundButton = document.getElementById("compound_invest");
+			compoundButton.onclick = requestYieldCompound; 
+			
+			
+			// idle 
+			const requestYieldIdle = () => {
+				requestYield("idle");
+			} 			
+			const idleButton = document.getElementById("idle_invest");
+			idleButton.onclick = requestYieldIdle; 
+			
+			
+			// stake dao			
+			const requestYieldstakedao = () => {
+				requestYield("stakedao");
+			} 			
+			const stakedaoButton = document.getElementById("stakedao_invest");
+			stakedaoButton.onclick = requestYieldstakedao; 
+			
+			// pods 
+			const requestYieldpods = () => {
+				requestYield("pods");
+			} 		
+			const podsButton = document.getElementById("pods_invest");
+			podsButton.onclick = requestYieldpods; 
+			
+			// bitgo
+			const requestYieldbitgo = () => {
+				requestYield("bitgo");
+			} 
+			const bitgoButton = document.getElementById("bitgo_invest");
+			bitgoButton.onclick = requestYieldbitgo; 
+						
+			// badgerdao
+			const requestYieldbadgerdao = () => {
+				requestYield("badgerdao");
+			} 
+			const badgerdaoButton = document.getElementById("badgerdao_invest");
+			badgerdaoButton.onclick = requestYieldbadgerdao; 
+			
+			// liquity
+			const requestYieldliquity = () => {
+				requestYield("liquity");
+			} 
+			const liquityButton = document.getElementById("liquity_invest");
+			liquityButton.onclick = requestYieldliquity; 
+			
+			// vega 
+			const requestYieldvega = () => {
+				requestYield("vega");
+			} 
+			const vegaButton = document.getElementById("vega_invest");
+			vegaButton.onclick = requestYieldvega; 
+			
+			// akropolis
+			const requestYieldakropolis = () => {
+				requestYield("akropolis");
+			} 
+			const akropolisButton = document.getElementById("akropolis_invest");
+			akropolisButton.onclick = requestYieldakropolis; 
+			
+			
+			
+			
+			//var slider = document.getElementById("myRange");
+			//var output = document.getElementById("value");
+			//output.innerHTML = slider.value; // Display the default slider value
+
+			// Update the current slider value (each time you drag the slider handle)
+			//slider.oninput = function() {
+			//	output.innerHTML = this.value;
+			//}
+			
+		</script>
+	</body> 
+
+
+
+
+</html> 

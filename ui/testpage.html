@@ -1,0 +1,881 @@
+<html> 
+	<head> 
+		
+	</head> 
+	<body> 
+	
+		<p align="center"><img src="assets/images/logo/g-yield logo.png" width="175" height="175"/></p>
+		
+		
+		<button id="web3connect">Connect Metamask</button> 
+		
+		<table border=10> 
+			<tr> 
+			
+				<!-- right column --> 
+				<td> 
+					<table >
+						<!-- 88mph -->
+						<tr>
+							<!-- logo -->
+							<td>
+								<h2>88mph</h2>
+								<img src="assets/images/logo/88mph-logo-dark.png" width="100"  height="100"/>
+							</td>
+							<!--// end logo -->
+							<!-- product -->
+							<td>
+								<table>
+									<tr> 
+										<th>Invest Term</th>
+										<th>Max Yield</th>
+										<th>Min Liquidity</th>
+										<th>Max Liquidity</th>
+									</tr>														
+									<tr>
+										<td>1 day</td>
+										<td>Max 2%</td>
+										<td>Min USDC 100</td>
+										<td>Max USDC 10k</td>
+									</tr>
+									<tr>
+										<td>7 day</td>
+										<td>Max 10%</td>
+										<td>Min USDC 1k</td>
+										<td>Max USDC 100k</td>
+									</tr>
+									<tr>
+										<td>30 day</td>
+										<td>Max 20%</td>
+										<td>Min USDC 10k</td>
+										<td>Max USDC 1m</td>
+									</tr>
+								</table>
+							</td>
+							<!-- // end product --> 
+							<!-- action --> 
+							<td>
+								<table>
+									<tr>
+										<th>Invest</th> 
+									</tr> 
+									<tr>
+										<td align="center">
+											<select name="invest">
+												<option id="1">1 day</option>
+												<option id="2">7 day</option>
+												<option id="3">30 day</option>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<input type="text" placeholder="USDC amount" autocomplete="on" required />
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<input type="range" min="1" max="30" value="2" class="slider-square" id="88mph_slider"/> <span id="88mph_slider_value"></span>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<button type="submit" id="88mph_invest" class="main-button ">Invest</button>
+										</td>
+									</tr>
+								</table>
+							</td>
+							<!-- // end action --> 
+						</tr>
+						<!-- // end 88mph --> 
+						
+						
+						<!-- compound -->
+						<tr>
+							<td><h2>Compound</h2><<img src="assets/images/logo/compound-comp-logo.png" width="100"  height="100"/></td>
+							<td>
+								<table>
+									<tr> 
+										<th>Invest Term</th>
+										<th>Max Yield</th>
+										<th>Min Liquidity</th>
+										<th>Max Liquidity</th>
+									</tr>														
+									<tr>
+										<td>1 day</td>
+										<td>Max 2%</td>
+										<td>Min USDC 100</td>
+										<td>Max USDC 10k</td>
+									</tr>
+									<tr>
+										<td>7 day</td>
+										<td>Max 10%</td>
+										<td>Min USDC 1k</td>
+										<td>Max USDC 100k</td>
+									</tr>
+									<tr>
+										<td>30 day</td>
+										<td>Max 20%</td>
+										<td>Min USDC 10k</td>
+										<td>Max USDC 1m</td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table>
+									<tr>
+										<th>Invest</th> 
+									</tr> 
+									<tr>
+										<td align="center">
+											<select name="invest">
+										<option id="1">1 day</option>
+										<option id="2">7 day</option>
+										<option id="3">30 day</option>
+									  </select>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<input type="text" placeholder="USDC amount" autocomplete="on" required/>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<input type="range" min="1" max="30" value="2" class="slider-square" id="myRange"><span id="value"></span>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<button type="submit" id="form-submit" class="main-button ">Invest</button>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<!-- // end compound -->
+						
+						<!-- idle -->
+						<tr>
+							<td><h2>Idle</h2><<img src="assets/images/logo/idle-logo.png" width="100"  height="100"/></td>
+							<td>
+								<table>
+									<tr> 
+										<th>Invest Term</th>
+										<th>Max Yield</th>
+										<th>Min Liquidity</th>
+										<th>Max Liquidity</th>
+									</tr>														
+									<tr>
+										<td>1 day</td>
+										<td>Max 2%</td>
+										<td>Min USDC 100</td>
+										<td>Max USDC 10k</td>
+									</tr>
+									<tr>
+										<td>7 day</td>
+										<td>Max 10%</td>
+										<td>Min USDC 1k</td>
+										<td>Max USDC 100k</td>
+									</tr>
+									<tr>
+										<td>30 day</td>
+										<td>Max 20%</td>
+										<td>Min USDC 10k</td>
+										<td>Max USDC 1m</td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table>
+									<tr>
+										<th>Invest</th> 
+									</tr> 
+									<tr>
+										<td align="center">
+											<select name="invest">
+										<option id="1">1 day</option>
+										<option id="2">7 day</option>
+										<option id="3">30 day</option>
+									  </select>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<input type="text" placeholder="USDC amount" autocomplete="on" required/>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<input type="range" min="1" max="30" value="2" class="slider-square" id="myRange"><span id="value"></span>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<button type="submit" id="form-submit" class="main-button ">Invest</button>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<!-- // end idle --> 
+						
+						<!-- stake dao -->
+						<tr>
+							<td><h2>Stake DAO</h2><<img src="assets/images/logo/stake dao1611223377376.png" width="100"  height="100"/></td>
+							<td>
+								<table>
+									<tr> 
+										<th>Invest Term</th>
+										<th>Max Yield</th>
+										<th>Min Liquidity</th>
+										<th>Max Liquidity</th>
+									</tr>														
+									<tr>
+										<td>1 day</td>
+										<td>Max 2%</td>
+										<td>Min USDC 100</td>
+										<td>Max USDC 10k</td>
+									</tr>
+									<tr>
+										<td>7 day</td>
+										<td>Max 10%</td>
+										<td>Min USDC 1k</td>
+										<td>Max USDC 100k</td>
+									</tr>
+									<tr>
+										<td>30 day</td>
+										<td>Max 20%</td>
+										<td>Min USDC 10k</td>
+										<td>Max USDC 1m</td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table>
+									<tr>
+										<th>Invest</th> 
+									</tr> 
+									<tr>
+										<td align="center">
+											<select name="invest">
+										<option id="1">1 day</option>
+										<option id="2">7 day</option>
+										<option id="3">30 day</option>
+									  </select>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<input type="text" placeholder="USDC amount" autocomplete="on" required/>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<input type="range" min="1" max="30" value="2" class="slider-square" id="myRange"><span id="value"></span>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<button type="submit" id="form-submit" class="main-button ">Invest</button>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						
+						<!-- pods --> 
+						<tr>
+							<td><h2>Pods</h2><<img src="assets/images/logo/pods_network.png" width="100"  height="100"/></td>
+							<td>
+								<table>
+									<tr> 
+										<th>Invest Term</th>
+										<th>Max Yield</th>
+										<th>Min Liquidity</th>
+										<th>Max Liquidity</th>
+									</tr>														
+									<tr>
+										<td>1 day</td>
+										<td>Max 2%</td>
+										<td>Min USDC 100</td>
+										<td>Max USDC 10k</td>
+									</tr>
+									<tr>
+										<td>7 day</td>
+										<td>Max 10%</td>
+										<td>Min USDC 1k</td>
+										<td>Max USDC 100k</td>
+									</tr>
+									<tr>
+										<td>30 day</td>
+										<td>Max 20%</td>
+										<td>Min USDC 10k</td>
+										<td>Max USDC 1m</td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table>
+									<tr>
+										<th>Invest</th> 
+									</tr> 
+									<tr>
+										<td align="center">
+											<select name="invest">
+										<option id="1">1 day</option>
+										<option id="2">7 day</option>
+										<option id="3">30 day</option>
+									  </select>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<input type="text" placeholder="USDC amount" autocomplete="on" required/>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<input type="range" min="1" max="30" value="2" class="slider-square" id="myRange"><span id="value"></span>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<button type="submit" id="form-submit" class="main-button ">Invest</button>
+										</td>
+									</tr>
+								</table>
+							</td>
+											
+						</tr>
+						<!-- // end pods --> 
+						
+						<!-- bitgo --> 
+						<tr>
+							<td><h2>Bitgo</h2><<img src="assets/images/logo/bitgo-shield-logo.svg" width="100"  height="100"/></td>
+							<td>
+								<table>
+									<tr> 
+										<th>Invest Term</th>
+										<th>Max Yield</th>
+										<th>Min Liquidity</th>
+										<th>Max Liquidity</th>
+									</tr>														
+									<tr>
+										<td>1 day</td>
+										<td>Max 2%</td>
+										<td>Min USDC 100</td>
+										<td>Max USDC 10k</td>
+									</tr>
+									<tr>
+										<td>7 day</td>
+										<td>Max 10%</td>
+										<td>Min USDC 1k</td>
+										<td>Max USDC 100k</td>
+									</tr>
+									<tr>
+										<td>30 day</td>
+										<td>Max 20%</td>
+										<td>Min USDC 10k</td>
+										<td>Max USDC 1m</td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table>
+									<tr>
+										<th>Invest</th> 
+									</tr> 
+									<tr>
+										<td align="center">
+											<select name="invest">
+										<option id="1">1 day</option>
+										<option id="2">7 day</option>
+										<option id="3">30 day</option>
+									  </select>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<input type="text" placeholder="USDC amount" autocomplete="on" required/>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<input type="range" min="1" max="30" value="2" class="slider-square" id="myRange"><span id="value"></span>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<button type="submit" id="form-submit" class="main-button ">Invest</button>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<!-- // end bitgo -->
+						
+						<!-- badger dao --> 
+						<tr>
+							<td><h2>Badger DAO</h2><<img src="assets/images/logo/badgerdao.png" width="100"  height="100"/></td>
+							<td>
+								<table>
+									<tr> 
+										<th>Invest Term</th>
+										<th>Max Yield</th>
+										<th>Min Liquidity</th>
+										<th>Max Liquidity</th>
+									</tr>														
+									<tr>
+										<td>1 day</td>
+										<td>Max 2%</td>
+										<td>Min USDC 100</td>
+										<td>Max USDC 10k</td>
+									</tr>
+									<tr>
+										<td>7 day</td>
+										<td>Max 10%</td>
+										<td>Min USDC 1k</td>
+										<td>Max USDC 100k</td>
+									</tr>
+									<tr>
+										<td>30 day</td>
+										<td>Max 20%</td>
+										<td>Min USDC 10k</td>
+										<td>Max USDC 1m</td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table>
+									<tr>
+										<th>Invest</th> 
+									</tr> 
+									<tr>
+										<td align="center">
+											<select name="invest">
+										<option id="1">1 day</option>
+										<option id="2">7 day</option>
+										<option id="3">30 day</option>
+									  </select>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<input type="text" placeholder="USDC amount" autocomplete="on" required/>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<input type="range" min="1" max="30" value="2" class="slider-square" id="myRange"><span id="value"></span>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<button type="submit" id="form-submit" class="main-button ">Invest</button>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<!-- // end badger dao -->
+						
+						<!--  liquity -->
+						<tr>
+							<td><h2>Liquity</h2><<img src="assets/images/logo/liquity.jpg" width="100"  height="100"/></td>
+							<td>
+								<table>
+									<tr> 
+										<th>Invest Term</th>
+										<th>Max Yield</th>
+										<th>Min Liquidity</th>
+										<th>Max Liquidity</th>
+									</tr>														
+									<tr>
+										<td>1 day</td>
+										<td>Max 2%</td>
+										<td>Min USDC 100</td>
+										<td>Max USDC 10k</td>
+									</tr>
+									<tr>
+										<td>7 day</td>
+										<td>Max 10%</td>
+										<td>Min USDC 1k</td>
+										<td>Max USDC 100k</td>
+									</tr>
+									<tr>
+										<td>30 day</td>
+										<td>Max 20%</td>
+										<td>Min USDC 10k</td>
+										<td>Max USDC 1m</td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table>
+									<tr>
+										<th>Invest</th> 
+									</tr> 
+									<tr>
+										<td align="center">
+											<select name="invest">
+										<option id="1">1 day</option>
+										<option id="2">7 day</option>
+										<option id="3">30 day</option>
+									  </select>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<input type="text" placeholder="USDC amount" autocomplete="on" required/>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<input type="range" min="1" max="30" value="2" class="slider-square" id="myRange"><span id="value"></span>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<button type="submit" id="form-submit" class="main-button ">Invest</button>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<!-- // end liquity -->
+						
+						<!-- element fi --> 
+						<tr>
+							<td><h2>Element Fi</h2><<img src="assets/images/logo/element-fi-logo.svg" width="100"  height="100"/></td>
+							<td>
+								<table>
+									<tr> 
+										<th>Invest Term</th>
+										<th>Max Yield</th>
+										<th>Min Liquidity</th>
+										<th>Max Liquidity</th>
+									</tr>														
+									<tr>
+										<td>1 day</td>
+										<td>Max 2%</td>
+										<td>Min USDC 100</td>
+										<td>Max USDC 10k</td>
+									</tr>
+									<tr>
+										<td>7 day</td>
+										<td>Max 10%</td>
+										<td>Min USDC 1k</td>
+										<td>Max USDC 100k</td>
+									</tr>
+									<tr>
+										<td>30 day</td>
+										<td>Max 20%</td>
+										<td>Min USDC 10k</td>
+										<td>Max USDC 1m</td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table>
+									<tr>
+										<th>Invest</th> 
+									</tr> 
+									<tr>
+										<td align="center">
+											<select name="invest">
+										<option id="1">1 day</option>
+										<option id="2">7 day</option>
+										<option id="3">30 day</option>
+									  </select>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<input type="text" placeholder="USDC amount" autocomplete="on" required/>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<input type="range" min="1" max="30" value="2" class="slider-square" id="myRange"><span id="value"></span>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<button type="submit" id="form-submit" class="main-button ">Invest</button>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<!-- // end element fi -->
+						
+						<!-- vega -->
+						<tr>
+							<td><h2>Vega</h2><img src="assets/images/logo/vega 10223.png" width="100"  height="100"/></td>
+							<td>
+								<table>
+									<tr> 
+										<th>Invest Term</th>
+										<th>Max Yield</th>
+										<th>Min Liquidity</th>
+										<th>Max Liquidity</th>
+									</tr>														
+									<tr>
+										<td>1 day</td>
+										<td>Max 2%</td>
+										<td>Min USDC 100</td>
+										<td>Max USDC 10k</td>
+									</tr>
+									<tr>
+										<td>7 day</td>
+										<td>Max 10%</td>
+										<td>Min USDC 1k</td>
+										<td>Max USDC 100k</td>
+									</tr>
+									<tr>
+										<td>30 day</td>
+										<td>Max 20%</td>
+										<td>Min USDC 10k</td>
+										<td>Max USDC 1m</td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table>
+									<tr>
+										<th>Invest</th> 
+									</tr> 
+									<tr>
+										<td align="center">
+											<select name="invest">
+										<option id="1">1 day</option>
+										<option id="2">7 day</option>
+										<option id="3">30 day</option>
+									  </select>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<input type="text" placeholder="USDC amount" autocomplete="on" required/>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<input type="range" min="1" max="30" value="2" class="slider-square" id="myRange"><span id="value"></span>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<button type="submit" id="form-submit" class="main-button ">Invest</button>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<!-- // end vega --> 
+						
+						<!-- akropolis --> 
+				
+						<tr>
+							<td><h2>Akropolis</h2><<img src="assets/images/logo/akropolis-akro-logo.png" width="100"  height="100"/></td>
+							<td>
+								<table>
+									<tr> 
+										<th>Invest Term</th>
+										<th>Max Yield</th>
+										<th>Min Liquidity</th>
+										<th>Max Liquidity</th>
+									</tr>														
+									<tr>
+										<td>1 day</td>
+										<td>Max 2%</td>
+										<td>Min USDC 100</td>
+										<td>Max USDC 10k</td>
+									</tr>
+									<tr>
+										<td>7 day</td>
+										<td>Max 10%</td>
+										<td>Min USDC 1k</td>
+										<td>Max USDC 100k</td>
+									</tr>
+									<tr>
+										<td>30 day</td>
+										<td>Max 20%</td>
+										<td>Min USDC 10k</td>
+										<td>Max USDC 1m</td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table>
+									<tr>
+										<th>Invest</th> 
+									</tr> 
+									<tr>
+										<td align="center">
+											<select name="invest">
+										<option id="1">1 day</option>
+										<option id="2">7 day</option>
+										<option id="3">30 day</option>
+									  </select>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<input type="text" placeholder="USDC amount" autocomplete="on" required/>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<input type="range" min="1" max="30" value="2" class="slider-square" id="myRange"><span id="value"></span>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											<button type="submit" id="form-submit" class="main-button ">Invest</button>
+										</td>
+									</tr>
+								</table>
+							</td>
+							
+						</tr>
+						
+						<!-- // end akropolis -->
+						
+						<!-- oracles -->
+						<tr>
+							<td colspan="3" align="center">
+							<table>
+								<tr> 
+									<td><img src="assets\images\logo\trb.png" width="75" height="75"/> </td>
+									<td><img src="assets\images\logo\umbrella network1612198796685.png" width="75" height="75"/> </td>
+									<td><img src="assets\images\logo\chainlink-link-logo.png" width="75" height="75"/> </td>
+								</tr>
+							</table>
+							</td>
+						</tr> 
+						 <!-- // end oracles -->
+				
+						
+					</table>	
+		
+				</td>
+				<!-- // end left column --> 
+				
+				<!-- right column --> 
+				<td valign="top">
+					<center><h1>Yield Request History</h1></center>
+					<h3>Total Locked Principal (USDC) : 0</h3><h3>Total Locked Earnings (USDC) : 0</h3>
+					<table> 
+						<tr>
+							<th>Yield Request ID</th><th>Protocol</th><th>Principal</th><th>Currency</th><th>Requested Yield(%)</th><th>Request Date</th><th>Maturity Date</th><th>Request Status</th><th></th><th></td>
+						</tr>
+						<tr>
+							<td>01</td><td>MOCK</td><td>100</td><td>5</td><td>USDC</td><td>00/00/00</td><td>00/00/00</td><td>Pending</td><td><a href="">view</a></td><td><input type="button" value="cancel"/>
+							<br/>Variable Cancellation Fee: 2% (0.02)</td>
+						</tr> 
+						<tr>
+							<td>01</td><td>MOCK</td><td>100</td><td>5</td><td>USDC</td><td>00/00/00</td><td>00/00/00</td><td>Complete</td><td><a href="">view</a></td><td><input type="button" value="withdraw"/></td>
+						</tr> 
+					</table>
+				</td>
+				<!-- // end right column --> 
+			</tr>
+		</table>
+		
+		
+		
+		<script>
+			//Basic Actions Section
+			const onboardButton = document.getElementById('connectButton');
+			const getAccountsButton = document.getElementById('getAccounts');
+			const getAccountsResult = document.getElementById('getAccountsResult');
+		
+			const initialize = () => {
+			  //Basic Actions Section
+			  const onboardButton = document.getElementById('web3connect');
+
+			  //Created check function to see if the MetaMask extension is installed
+			  const isMetaMaskInstalled = () => {
+				//Have to check the ethereum binding on the window object to see if it's installed
+				const { ethereum } = window;
+				return Boolean(ethereum && ethereum.isMetaMask);
+			  };
+
+			  //------Inserted Code------\\
+			  const MetaMaskClientCheck = () => {
+				//Now we check to see if MetaMask is installed
+				if (!isMetaMaskInstalled()) {
+				  //If it isn't installed we ask the user to click to install it
+				  onboardButton.innerText = 'Click here to install MetaMask!';
+				} else {
+				  //If it is installed we change our button text
+				  onboardButton.innerText = 'Connect';
+				}
+			  };
+			  MetaMaskClientCheck();
+			  //------/Inserted Code------\\
+			};
+		
+			const MetaMaskClientCheck = () => {
+			  //Now we check to see if Metmask is installed
+			  if (!isMetaMaskInstalled()) {
+				//If it isn't installed we ask the user to click to install it
+				onboardButton.innerText = 'Click here to install MetaMask!';
+				//When the button is clicked we call this function
+				onboardButton.onclick = onClickInstall;
+				//The button is now disabled
+				onboardButton.disabled = false;
+			  } else {
+				//If it is installed we change our button text
+				onboardButton.innerText = 'Connect';
+			  }
+			};
+			MetaMaskClientCheck();
+			
+			//We create a new MetaMask onboarding object to use in our app
+			const onboarding = new MetaMaskOnboarding({ forwarderOrigin });
+
+			//This will start the onboarding proccess
+			const onClickInstall = () => {
+			  onboardButton.innerText = 'Onboarding in progress';
+			  onboardButton.disabled = true;
+			  //On this object we have startOnboarding which will start the onboarding process for our end user
+			  onboarding.startOnboarding();
+			};
+					
+			const onClickConnect = async () => {
+			  try {
+				// Will open the MetaMask UI
+				// You should disable this button while the request is pending!
+				await ethereum.request({ method: 'eth_requestAccounts' });
+			  } catch (error) {
+				console.error(error);
+			  }
+			};
+
+			//Eth_Accounts-getAccountsButton
+			getAccountsButton.addEventListener('click', async () => {
+			  //we use eth_accounts because it returns a list of addresses owned by us.
+			  const accounts = await ethereum.request({ method: 'eth_accounts' });
+			  //We take the first address in the array of addresses and display it
+			  getAccountsResult.innerHTML = accounts[0] || 'Not able to get accounts';
+			});
+
+					
+			var slider = document.getElementById("myRange");
+			var output = document.getElementById("value");
+			output.innerHTML = slider.value; // Display the default slider value
+
+			// Update the current slider value (each time you drag the slider handle)
+			slider.oninput = function() {
+				output.innerHTML = this.value;
+			}
+		</script>
+	</body> 
+
+
+
+
+</html> 

@@ -21,12 +21,17 @@
 		"outputs": [
 			{
 				"internalType": "uint256",
-				"name": "_txnRef",
+				"name": "_cancellationTxnRef",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
 				"name": "_cancellationDate",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_totalAmountReturned",
 				"type": "uint256"
 			},
 			{
@@ -45,54 +50,7 @@
 	},
 	{
 		"inputs": [],
-		"name": "getAcceptedERC20",
-		"outputs": [
-			{
-				"internalType": "address[]",
-				"name": "_erc20s",
-				"type": "address[]"
-			},
-			{
-				"internalType": "string[]",
-				"name": "_erc20Names",
-				"type": "string[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getRegisteredProtocols",
-		"outputs": [
-			{
-				"internalType": "string[]",
-				"name": "_protocol",
-				"type": "string[]"
-			},
-			{
-				"internalType": "string[]",
-				"name": "_protocolWebsite",
-				"type": "string[]"
-			},
-			{
-				"internalType": "bool[]",
-				"name": "_enabled",
-				"type": "bool[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "_yieldProtocol",
-				"type": "string"
-			}
-		],
-		"name": "getUserTransactionsForProtocol",
+		"name": "getYieldRequestsForAddress",
 		"outputs": [
 			{
 				"internalType": "uint256[]",
@@ -100,17 +58,47 @@
 				"type": "uint256[]"
 			},
 			{
+				"internalType": "string[]",
+				"name": "_yieldProtocols",
+				"type": "string[]"
+			},
+			{
 				"internalType": "uint256[]",
-				"name": "_principle",
+				"name": "_principals",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "_yieldPercentages",
 				"type": "uint256[]"
 			},
 			{
 				"internalType": "uint256[]",
 				"name": "_yieldRequestDates",
 				"type": "uint256[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "_yieldMaturityDates",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "string[]",
+				"name": "_yieldRequestStatuses",
+				"type": "string[]"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_totalLockedPrincipleUSD",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_totalLockedEarningsUSD",
+				"type": "uint256"
 			}
 		],
-		"stateMutability": "view",
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -204,11 +192,21 @@
 			},
 			{
 				"internalType": "uint256",
+				"name": "_percentageComplete",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
 				"name": "_earnedToDate",
 				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_yieldStatus",
+				"type": "string"
 			}
 		],
-		"stateMutability": "view",
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -228,12 +226,22 @@
 		"outputs": [
 			{
 				"internalType": "uint256",
+				"name": "_txnRef",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
 				"name": "_principalReturned",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
 				"name": "_earningsReturned",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_totalReturned",
 				"type": "uint256"
 			}
 		],
