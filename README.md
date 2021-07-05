@@ -1,4 +1,5 @@
-# g-yield
+<p align="center"><img src="https://github.com/cryptotwilight/g-yield/blob/103a3bdd5e035ac11d0b5fd39f7ebc249cacbe86/media/logo.png"/></p>
+
 This is the repository for the g-yield platform
 
 **Deployments**
